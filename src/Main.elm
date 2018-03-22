@@ -28,7 +28,7 @@ update (NewContent content) oldContent =
 
 view content =
     div []
-        [ input [ placeholder "Text to reverse", onInput NewContent, myStyle ] []
+        [ input [ placeholder "Text to odd", onInput NewContent, myStyle ] []
         , div [ myStyle ] [ text <| oddString content ]
         ]
 
