@@ -2,6 +2,7 @@ module Tests exposing (..)
 
 import Test exposing (..)
 import TestExp exposing (..)
+import Main exposing (takeOdd, oddString)
 
 
 --  target modules
@@ -9,8 +10,20 @@ import TestExp exposing (..)
 
 all : Test
 all =
-    describe "List module Test"
-        [ "Test"
-            => (List.range 1 10 |> List.drop 3 |> List.map (\x -> x * 2) |> List.head)
-            === Just 8
+    describe "Main module Test"
+        [ "takeOdd Test1"
+            => takeOdd [ 1, 2, 3, 4, 5, 6 ]
+            === [ 2, 4, 6 ]
+        , "takeOdd Test2"
+            => takeOdd [ 'a', 'b', 'c', 'd', 'e', 'f' ]
+            === [ 'b', 'd', 'f' ]
+        , "takeOdd Test3"
+            => takeOdd []
+            === []
+        , "oddString Test1"
+            => oddString "abcdef"
+            === "bdf"
+        , "oddString Test2"
+            => oddString ""
+            === ""
         ]

@@ -33,24 +33,29 @@ view content =
         ]
 
 
-takeOdd : Int -> List a -> List a
-takeOdd n list =
+takeNLoop : Int -> List a -> List a
+takeNLoop n list =
     case list of
         [] ->
             []
 
         x :: xs ->
             if n % 2 == 1 then
-                x :: takeOdd (n + 1) xs
+                x :: takeNLoop (n + 1) xs
             else
-                takeOdd (n + 1) xs
+                takeNLoop (n + 1) xs
+
+
+takeOdd : List a -> List a
+takeOdd =
+    takeNLoop 0
 
 
 oddString : String -> String
 oddString str =
     str
         |> String.toList
-        |> takeOdd 0
+        |> takeOdd
         |> String.fromList
 
 
